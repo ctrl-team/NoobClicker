@@ -43,6 +43,10 @@ for(let i = 0; i <= 5; i++)
           upgrade = parseInt(localStorage.getItem('upgrade'))
           break;
       }
+  if(isNaN(clips) == true) {odbuguj()}
+  
+    
+  
   
   clips_div.innerHTML = clips;
   btn2.value = "ulepsz ("+ upgrade +")";
@@ -77,6 +81,7 @@ btn1.addEventListener('click', ()=>{
     clips += upgrade;
     clips_div.innerHTML = clips;
     console.log(`[LOG][${godzina}]Naciśnięto button`);
+    localStorage.setItem('clips', clips)
 })
 
 btn2.addEventListener('click', ()=>{
@@ -97,6 +102,8 @@ btn2.addEventListener('click', ()=>{
         btn2.value = "ulepsz ("+ upgrade +")"
         btn2.title = upgrade * 10 + " spinaczy"
         console.log(`[LOG][${godzina}]Kupiono upgrade`)
+        localStorage.setItem('clips', clips)
+        localStorage.setItem('upgrade', upgrade)
     }
 })
 
@@ -124,6 +131,8 @@ btn3.addEventListener('click', ()=>{
     clips_div.innerHTML = clips;
     btn3.title = niewolnik * 100 + " spinaczy"
     console.log(`[LOG][${godzina}]Kupiono niewolnika`)
+    localStorage.setItem('niewolnik' , niewolnik)
+    localStorage.setItem('niewolnik_gen' , niewolnik_gen)
 
   }
 
@@ -149,6 +158,8 @@ btn4.addEventListener('click', ()=>{
     clips_div.innerHTML = clips;
     btn4.title = koparka * 1000 + " spinaczy"
     console.log(`[LOG][${godzina}]Kupiono koparke`)
+    localStorage.setItem('koparka' , koparka)
+    localStorage.setItem('koparka_gen' , koparka_gen)
 
   }
 
@@ -163,6 +174,7 @@ function slave()
 
     clips += niewolnik_gen;
     clips_div.innerHTML = clips;
+    localStorage.setItem('clips', clips)
 }
 function slave2()
 {
@@ -172,19 +184,20 @@ function slave2()
 
     clips += koparka_gen;
     clips_div.innerHTML = clips;
+    localStorage.setItem('clips', clips)
 }
 
 function getinfo() {
 console.log(`[Browser][${new Date().getHours() + ":" + new Date().getMinutes()}]Wszedł z: ` + navigator.appName + " | " + navigator.appVersion)
 }
 
-function wyczysc()
+function odbuguj()
 {
   localStorage.setItem('clips', '0')
   localStorage.setItem('upgrade', '1')
-  localStorage.setItem('niewolnik', '0')
+  localStorage.setItem('niewolnik', '1')
   localStorage.setItem('niewolnik_gen', '0')
-  localStorage.setItem('koparka' , '0')
+  localStorage.setItem('koparka' , '1')
   localStorage.setItem('koparka_gen' , '0')
   location.reload();
 }
