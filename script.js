@@ -57,7 +57,7 @@ btn3.addEventListener('click', ()=>{
 
   if(clips<niewolnik_price)
   {
-    alert('Za mało spinaczy') 
+    alert('Za mało spinaczy')
   }
   else if(clips >= niewolnik_price)
   {
@@ -80,7 +80,7 @@ function slave()
 {
     let slave_timeout = setTimeout( slave , 4000);
 
-    console.log('gowno')
+    console.log(`[LOG][${godzina}]Dodano pieniądze z niewolnika`)
 
     clips += niewolnik_gen;
     clips_div.innerHTML = clips;
