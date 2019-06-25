@@ -50,6 +50,7 @@ btn2.addEventListener('click', ()=>{
 
 clr.addEventListener('click', ()=>{
     clips+=100
+    clips_div.innerHTML = clips;
 })
 btn3.addEventListener('click', ()=>{
 
