@@ -13,7 +13,56 @@ let koparka = 1;
 let koparka_gen = 0;
 let godzina = new Date().getHours() + ":" + new Date().getMinutes();
 
-window.onload = getinfo()
+window.onload = ()=>{
+  
+getinfo()
+  
+  console.log(localStorage)
+  
+for(let i = 0; i <= 5; i++)
+{
+       
+    switch(i)
+    {
+        case 0:
+          niewolnik = parseInt(localStorage.getItem('niewolnik'))
+          continue;
+        case 1:
+          koparka_gen = parseInt(localStorage.getItem('koparka_gen'))
+          continue;
+        case 2:
+          clips = parseInt(localStorage.getItem('clips'))
+          continue;
+        case 3:
+          niewolnik_gen = parseInt(localStorage.getItem('niewolnik_gen'))
+          continue;
+        case 4:
+          koparka = parseInt(localStorage.getItem('koparka'))
+          continue;
+        case 5:
+          upgrade = parseInt(localStorage.getItem('upgrade'))
+          break;
+      }
+  
+  clips_div.innerHTML = clips;
+  btn2.value = "ulepsz ("+ upgrade +")";
+  btn2.title = upgrade * 10 + " spinaczy";
+  btn3.title = niewolnik * 100 + " spinaczy";
+  btn4.title = koparka * 1000 + " spinaczy"
+  
+}}
+
+const buttons = document.querySelectorAll('.btn')
+buttons.forEach(function(currentBtn){
+  currentBtn.addEventListener('click', ()=>{
+    localStorage.setItem('clips', clips)
+  localStorage.setItem('upgrade', upgrade)
+  localStorage.setItem('niewolnik', niewolnik)
+  localStorage.setItem('niewolnik_gen', niewolnik_gen)
+  localStorage.setItem('koparka' , koparka)
+  localStorage.setItem('koparka_gen' , koparka_gen)
+  })
+})
 
 function updategodzina(){
 
@@ -25,9 +74,9 @@ updategodzina();
 
 
 btn1.addEventListener('click', ()=>{
-    clips = clips + upgrade;
+    clips += upgrade;
     clips_div.innerHTML = clips;
-    console.log(`[LOG][${godzina}]Naciśnięto button`)
+    console.log(`[LOG][${godzina}]Naciśnięto button`);
 })
 
 btn2.addEventListener('click', ()=>{
@@ -123,4 +172,19 @@ function slave2()
 
     clips += koparka_gen;
     clips_div.innerHTML = clips;
+}
+
+function getinfo() {
+console.log(`[Browser][${new Date().getHours() + ":" + new Date().getMinutes()}]Wszedł z: ` + navigator.appName + " | " + navigator.appVersion)
+}
+
+function wyczysc()
+{
+  localStorage.setItem('clips', '0')
+  localStorage.setItem('upgrade', '1')
+  localStorage.setItem('niewolnik', '0')
+  localStorage.setItem('niewolnik_gen', '0')
+  localStorage.setItem('koparka' , '0')
+  localStorage.setItem('koparka_gen' , '0')
+  location.reload();
 }
