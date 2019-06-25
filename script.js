@@ -10,6 +10,8 @@ let niewolnik = 1;
 let niewolnik_gen = 0;
 let godzina = new Date().getHours() + ":" + new Date().getMinutes();
 
+window.onload = getinfo()
+
 function updategodzina(){
 
   godzina = new Date().getHours() + ":" + new Date().getMinutes();
@@ -47,17 +49,24 @@ btn2.addEventListener('click', ()=>{
 })
 
 clr.addEventListener('click', ()=>{
-    location.reload();
+    clips+=100
 })
 btn3.addEventListener('click', ()=>{
 
   let niewolnik_price = niewolnik * 100;
 
-  if(clips<niewolnik_price){ alert('Za mało spinaczy') }
-  else if(clips >= niewolnik_price){
+  if(clips<niewolnik_price)
+  {
+    alert('Za mało spinaczy') 
+  }
+  else if(clips >= niewolnik_price)
+  {
 
     niewolnik++;
-    niewolnik_gen= niewolnik_gen+4;
+    niewolnik_gen += 4;
+
+    slave()
+
     clips = clips - niewolnik_price;
     clips_div.innerHTML = clips;
     btn3.title = niewolnik * 100 + " spinaczy"
@@ -66,3 +75,13 @@ btn3.addEventListener('click', ()=>{
   }
 
 })
+
+function slave()
+{
+    let slave_timeout = setTimeout( slave , 4000);
+
+    console.log('gowno')
+
+    clips += niewolnik_gen;
+    clips_div.innerHTML = clips;
+}
