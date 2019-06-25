@@ -2,6 +2,7 @@ html{
     background: #0f0f0f;
     color: white;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 #wrap{
     display: flex;
@@ -14,6 +15,7 @@ html{
     font-size: 100px;
 }
 .btn{
+    font-family: 'Ubuntu', sans-serif;
     font-size: 25px;
     width: 100%;
     margin-top: 10px
