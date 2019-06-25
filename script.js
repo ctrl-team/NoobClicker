@@ -2,12 +2,15 @@ const clips_div = document.querySelector('#clips');
 const btn1 = document.querySelector('#btn1');
 const btn2 = document.querySelector('#btn2');
 const btn3 = document.querySelector('#btn3');
+const btn4 = document.querySelector('#btn4');
 const clr = document.querySelector('#devbtn');
 
 let clips = 0;
 let upgrade = 1;
 let niewolnik = 1;
 let niewolnik_gen = 0;
+let koparka = 1;
+let koparka_gen = 0;
 let godzina = new Date().getHours() + ":" + new Date().getMinutes();
 
 window.onload = getinfo()
@@ -77,6 +80,32 @@ btn3.addEventListener('click', ()=>{
 
 })
 
+btn4.addEventListener('click', ()=>{
+
+  let koparka_price = koparka * 1000;
+
+  if(clips<koparka_price)
+  {
+    alert('Za mało spinaczy')
+  }
+  else if(clips >= koparka_price)
+  {
+
+    koparka++;
+    koparka_gen += 10;
+
+    slave2()
+
+    clips = clips - koparka_price;
+    clips_div.innerHTML = clips;
+    btn4.title = koparka * 1000 + " spinaczy"
+    console.log(`[LOG][${godzina}]Kupiono koparke`)
+
+  }
+
+})
+
+
 function slave()
 {
     let slave_timeout = setTimeout( slave , 4000);
@@ -84,5 +113,14 @@ function slave()
     console.log(`[LOG][${godzina}]Dodano pieniądze z niewolnika`)
 
     clips += niewolnik_gen;
+    clips_div.innerHTML = clips;
+}
+function slave2()
+{
+    let slave2_timeout = setTimeout( slave2 , 6200);
+
+    console.log(`[LOG][${godzina}]Dodano pieniądze z koparki`)
+
+    clips += koparka_gen;
     clips_div.innerHTML = clips;
 }
