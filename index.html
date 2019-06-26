@@ -1,4 +1,3 @@
-<!--Nimplex&JaZa (C)-->
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -19,8 +18,6 @@
 </head>
 <body>
 
-    <button id="devbtn">clr</button>
-
     <div id="wrap">
         <div id="main">
             <div id="clips">0</div>
@@ -30,14 +27,17 @@
             <input type="button" title="1000 spinaczy" value="Koparka" id="btn4" class="btn"><br><br>
             <!--<input type="button" class="btn" value="Odbuguj grę" onclick="odbuguj()">
           <p class="btn">Uwaga może usunąć postęp</p>-->
-            <div style="text-align: center;" class="btn" id="Ulepszenia">0</div>
-            <div style="text-align: center;" class="btn" id="Niewolnicy">0</div>
-            <div style="text-align: center;" class="btn" id="Koparki">0</div>
+            <div style="text-align: center;" class="upgrades"  id="Ulepszenia"><span class="upgrade_clr">0</span></div>
+            <div style="text-align: center;" class="upgrades"  id="Niewolnicy"><span class="upgrade_clr">0</span></div>
+            <div style="text-align: center;" class="upgrades" id="Koparki"><span class="upgrade_clr">0</span></div>
 
         </div>
     </div>
 
+    <div id="ftr">
+	    <footer style="text-align: center;">JaZa&Nimplex&copy<a id="reset" href="#" onclick="odbuguj()"><br>Usuń postęp gry</a></footer>
+    </div>
+
     <script src="script.js"></script>
-	<footer style="text-align: center;">JaZa&Nimplex&copy <a href="#" onclick="odbuguj()">Usuń postęp gry</a></footer>
 </body>
 </html>

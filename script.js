@@ -101,7 +101,7 @@ btn2.addEventListener('click', ()=>{
 
         upgrade++;
         clips = clips - upgrade_price;
-        ulepszenia_div.innerHTML = `Ulepszenia: ${upgrade-1}`;
+        ulepszenia_div.innerHTML = `Ulepszenia: <span class="upgrade_clr">${upgrade-1}</span>`;
         btn2.title = upgrade * 10 + " spinaczy"
         clips_div.innerHTML = clips;
         console.log(`[LOG][${godzina}]Kupiono upgrade`)
@@ -110,10 +110,6 @@ btn2.addEventListener('click', ()=>{
     }
 })
 
-clr.addEventListener('click', ()=>{
-    clips+=100
-    clips_div.innerHTML = clips;
-})
 btn3.addEventListener('click', ()=>{
 
   let niewolnik_price = niewolnik * 100;
@@ -133,7 +129,7 @@ btn3.addEventListener('click', ()=>{
     clips = clips - niewolnik_price;
     clips_div.innerHTML = clips;
     btn3.title = niewolnik * 100 + " spinaczy"
-    niewolnicy_div.innerHTML = `Niewolnicy: ${niewolnik-1}`;
+    niewolnicy_div.innerHTML = `Niewolnicy: <span class="upgrade_clr">${niewolnik-1}</span>`;
     console.log(`[LOG][${godzina}]Kupiono niewolnika`)
     localStorage.setItem('clips' , clips)
     localStorage.setItem('niewolnik' , niewolnik)
@@ -161,7 +157,7 @@ btn4.addEventListener('click', ()=>{
     clips = clips - koparka_price;
     clips_div.innerHTML = clips;
     btn4.title = koparka * 1000 + " spinaczy"
-    koparki_div.innerHTML = `Koparki: ${koparka-1}`;
+    koparki_div.innerHTML = `Koparki: <span class="upgrade_clr">${koparka-1}</span>`;
     console.log(`[LOG][${godzina}]Kupiono koparke`)
     localStorage.setItem('clips' , clips)
     localStorage.setItem('koparka' , koparka)
