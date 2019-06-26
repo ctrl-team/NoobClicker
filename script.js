@@ -4,6 +4,10 @@ const btn2 = document.querySelector('#btn2');
 const btn3 = document.querySelector('#btn3');
 const btn4 = document.querySelector('#btn4');
 const clr = document.querySelector('#devbtn');
+const niewolnicy_div = document.querySelector('#Niewolnicy');
+const ulepszenia_div = document.querySelector('#Ulepszenia');
+const koparki_div = document.querySelector('#Koparki');
+
 
 let clips = 0;
 let upgrade = 1;
@@ -14,7 +18,6 @@ let koparka_gen = 0;
 let godzina = new Date().getHours() + ":" + new Date().getMinutes();
 
 window.onload = ()=>{
-  
 getinfo()
   
   console.log(localStorage)
@@ -44,12 +47,14 @@ for(let i = 0; i <= 5; i++)
           break;
       }
   if(isNaN(clips) == true) {odbuguj()}
-  
-    
+  koparki_div.innerHTML = `Koparki: ${koparka-1}`;
+  ulepszenia_div.innerHTML = `Ulepszenia: ${upgrade-1}`;
+  niewolnicy_div.innerHTML = `Niewolnicy: ${niewolnik-1}`;
+  slave();
+  slave2();
   
   
   clips_div.innerHTML = clips;
-  btn2.value = "ulepsz ("+ upgrade +")";
   btn2.title = upgrade * 10 + " spinaczy";
   btn3.title = niewolnik * 100 + " spinaczy";
   btn4.title = koparka * 1000 + " spinaczy"
@@ -98,9 +103,9 @@ btn2.addEventListener('click', ()=>{
 
         upgrade++;
         clips = clips - upgrade_price;
-        clips_div.innerHTML = clips;
-        btn2.value = "ulepsz ("+ upgrade +")"
+        ulepszenia_div.innerHTML = `Ulepszenia: ${upgrade-1}`;
         btn2.title = upgrade * 10 + " spinaczy"
+        clips_div.innerHTML = clips;
         console.log(`[LOG][${godzina}]Kupiono upgrade`)
         localStorage.setItem('clips', clips)
         localStorage.setItem('upgrade', upgrade)
@@ -130,7 +135,9 @@ btn3.addEventListener('click', ()=>{
     clips = clips - niewolnik_price;
     clips_div.innerHTML = clips;
     btn3.title = niewolnik * 100 + " spinaczy"
+    niewolnicy_div.innerHTML = `Niewolnicy: ${niewolnik-1}`;
     console.log(`[LOG][${godzina}]Kupiono niewolnika`)
+    localStorage.setItem('clips' , clips)
     localStorage.setItem('niewolnik' , niewolnik)
     localStorage.setItem('niewolnik_gen' , niewolnik_gen)
 
@@ -153,11 +160,12 @@ btn4.addEventListener('click', ()=>{
     koparka_gen += 10;
 
     slave2()
-
     clips = clips - koparka_price;
     clips_div.innerHTML = clips;
     btn4.title = koparka * 1000 + " spinaczy"
+    koparki_div.innerHTML = `Koparki: ${koparka-1}`;
     console.log(`[LOG][${godzina}]Kupiono koparke`)
+    localStorage.setItem('clips' , clips)
     localStorage.setItem('koparka' , koparka)
     localStorage.setItem('koparka_gen' , koparka_gen)
 
@@ -168,6 +176,7 @@ btn4.addEventListener('click', ()=>{
 
 function slave()
 {
+  if(niewolnik>1){
     let slave_timeout = setTimeout( slave , 4000);
 
     console.log(`[LOG][${godzina}]Dodano pieniądze z niewolnika`)
@@ -175,9 +184,11 @@ function slave()
     clips += niewolnik_gen;
     clips_div.innerHTML = clips;
     localStorage.setItem('clips', clips)
+  }
 }
 function slave2()
 {
+  if(koparka>1){
     let slave2_timeout = setTimeout( slave2 , 6200);
 
     console.log(`[LOG][${godzina}]Dodano pieniądze z koparki`)
@@ -185,6 +196,7 @@ function slave2()
     clips += koparka_gen;
     clips_div.innerHTML = clips;
     localStorage.setItem('clips', clips)
+  }
 }
 
 function getinfo() {
