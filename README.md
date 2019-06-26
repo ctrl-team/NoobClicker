@@ -1,2 +1,2 @@
 # NoobClicker
-to delete score type `odbuguj()` in your browser console.
+Aby usunąć postęp gry wpisz `odbuguj()` w konsoli w przeglądarce, bądź naciśnij przycisk w dolnej części strony.
