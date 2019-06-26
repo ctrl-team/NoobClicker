@@ -19,10 +19,8 @@ let godzina = new Date().getHours() + ":" + new Date().getMinutes();
 
 window.onload = ()=>{
 getinfo()
-  
-  console.log(localStorage)
-  
-for(let i = 0; i <= 5; i++)
+
+  for(let i = 0; i <= 5; i++)
 {
        
     switch(i)
