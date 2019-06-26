@@ -3,7 +3,7 @@ html{
     color: white;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
-    overflow-y: hidden
+    overflow: hidden
 }
 #wrap{
     display: flex;
@@ -19,7 +19,7 @@ html{
     transition: color 200ms, background 200ms;
     font-family: 'Ubuntu', sans-serif;
     font-size: 25px;
-    width: 300px;
+    width: 100%;
     margin-top: 10px;
     border: none;
     background: #fecb06;
@@ -34,14 +34,13 @@ html{
 .upgrades{
     font-family: 'Ubuntu', sans-serif;
     font-size: 25px;
-    width: 300px;
+    width: 100%;
     margin-top: 10px;
 }
 #ftr{
+    width: 100%;
     position: absolute;
     bottom: 0;
-    margin-right: 46.5%;
-    margin-left: 46.5%;
 }
 a{
     color: white;
